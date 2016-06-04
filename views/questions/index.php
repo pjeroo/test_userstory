@@ -6,7 +6,8 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Questions';
+$this->title = Yii::t('base', 'label-questions');
+$this->params['breadcrumbs'][] = ['label' => 'Admin', 'url' => ['/admin/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="questions-index">
@@ -14,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Questions', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('base', 'label-create-question-a'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -29,6 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'text',
                 'content' => function($data) {
                     return $data->category->title;
+                }
+            ],
+            [
+                'attribute' => 'lang',
+                'label' => 'Язык',
+                'format' => 'text',
+                'content' => function($data) {
+                    return isset(Yii::$app->params['availableLanguages'][$data->lang])
+                        ? Yii::$app->params['availableLanguages'][$data->lang]
+                        : 'Unknown';
                 }
             ],
             'question:html',

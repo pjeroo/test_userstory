@@ -10,7 +10,7 @@ use vova07\imperavi\Widget;
 /* @var $model app\models\Questions */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Questions', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('base', 'label-questions'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="questions-view">
@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
 
         <div class="form-group">
-            <?= Html::submitButton('update', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(Yii::t('base', 'label-create-answer'), ['class' => 'btn btn-primary']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

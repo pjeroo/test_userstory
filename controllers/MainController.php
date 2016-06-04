@@ -37,7 +37,10 @@ class MainController extends Controller
     public function actionIndex()
     {
         $searchModel = new QuestionSearch();
-        $queryParams = array_filter(Yii::$app->request->queryParams);
+        $queryParams = array_merge(
+            ['QuestionSearch' => ['lang' => $_SERVER['X_LANG']]],
+            array_filter(Yii::$app->request->queryParams)
+        );
 
         $dataProvider = $searchModel->search($queryParams);
 
@@ -68,13 +71,15 @@ class MainController extends Controller
     {
         $model = new Questions();
         $categoriesModel = new QuestionCategories();
+        $params = Yii::$app->request->post();
+        $params['Questions']['lang'] = $_SERVER['X_LANG'];
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load($params) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'categoryIds' => $categoriesModel->getCategoriesAsArray(),
+                'categoryIds' => $categoriesModel->getCategoriesAsArray($_SERVER['X_LANG']),
             ]);
         }
     }

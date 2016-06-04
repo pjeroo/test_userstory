@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $title
+ * @property string $lang
  */
 class QuestionCategories extends \yii\db\ActiveRecord
 {
@@ -26,7 +27,7 @@ class QuestionCategories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title', 'lang'], 'required'],
             [['title'], 'string', 'max' => 200],
         ];
     }
@@ -38,13 +39,14 @@ class QuestionCategories extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'title' => Yii::t('base', 'label-title'),
+            'lang' => Yii::t('base', 'label-lang')
         ];
     }
 
-    public function getCategoriesAsArray()
+    public function getCategoriesAsArray($lang = null)
     {
-        $categories = $this->find()->all();
+        $categories = ($lang == null) ? $this->find()->all() : $this->findAll(['lang' => $lang]);
 
         if (empty($categories)) {
             return [];

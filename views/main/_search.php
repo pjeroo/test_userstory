@@ -22,8 +22,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'answer') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('base', 'label-search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::t('base', 'label-reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

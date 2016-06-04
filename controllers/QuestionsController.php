@@ -66,8 +66,9 @@ class QuestionsController extends Controller
     {
         $model = new Questions();
         $categoriesModel = new QuestionCategories();
+        $params = Yii::$app->request->post();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load($params) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -93,7 +94,7 @@ class QuestionsController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'categoryIds' => $categoriesModel->getCategoriesAsArray(),
+                'categoryIds' => $categoriesModel->getCategoriesAsArray($model->lang),
             ]);
         }
     }

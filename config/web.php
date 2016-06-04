@@ -7,6 +7,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'defaultRoute' => 'main',
+    'language' => $_SERVER['X_LANG'],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -39,6 +40,13 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        'i18n' => [
+            'translations' => [
+                'base' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                ]
+            ]
+        ]
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -61,7 +69,6 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        'allowedIPs' => ['*']
     ];
 }
 

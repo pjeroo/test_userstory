@@ -8,8 +8,8 @@ use vova07\imperavi\Widget;
 /* @var $this yii\web\View */
 /* @var $model app\models\Questions */
 
-$this->title = 'Create Questions';
-$this->params['breadcrumbs'][] = ['label' => 'Questions', 'url' => ['index']];
+$this->title = Yii::t('base', 'label-create-question');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('base', 'label-questions'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="questions-create">
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton(Yii::t('base', 'label-create'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -19,7 +19,7 @@ class QuestionSearch extends Questions
     {
         return [
             [['id', 'category_id'], 'integer'],
-            [['title', 'question', 'answer'], 'safe'],
+            [['title', 'question', 'answer', 'lang'], 'safe'],
         ];
     }
 
@@ -61,6 +61,7 @@ class QuestionSearch extends Questions
         $query->andFilterWhere([
             'id' => $this->id,
             'category_id' => $this->category_id,
+            'lang' => $this->lang
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

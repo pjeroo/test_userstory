@@ -7,7 +7,8 @@ use yii\helpers\Html;
 /* @var $model app\models\Questions */
 
 $this->title = 'Create Questions';
-$this->params['breadcrumbs'][] = ['label' => 'Questions', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Admin', 'url' => ['/admin/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('base', 'label-questions'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="questions-create">

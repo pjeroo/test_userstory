@@ -15,6 +15,8 @@ use vova07\imperavi\Widget;
 
     <?= $form->field($model, 'category_id')->dropDownList($categoryIds) ?>
 
+    <?= $form->field($model, 'lang')->dropDownList(Yii::$app->params['availableLanguages']) ?>
+
     <?= $form->field($model, 'title')->textInput() ?>
 
     <?= $form->field($model, 'question')->widget(Widget::className(), [

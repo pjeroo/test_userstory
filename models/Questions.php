@@ -12,6 +12,7 @@ use Yii;
  * @property string $title
  * @property string $question
  * @property string $answer
+ * @property string $lang
  */
 class Questions extends \yii\db\ActiveRecord
 {
@@ -29,7 +30,7 @@ class Questions extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'question', 'title'], 'required'],
+            [['category_id', 'question', 'title', 'lang'], 'required'],
             [['category_id'], 'integer'],
             [['question', 'answer'], 'string'],
         ];
@@ -42,10 +43,11 @@ class Questions extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'category_id' => 'Category ID',
-            'title' => 'Title',
-            'question' => 'Question',
-            'answer' => 'Answer',
+            'category_id' => Yii::t('base', 'label-category'),
+            'title' => Yii::t('base', 'label-title'),
+            'question' => Yii::t('base', 'label-question'),
+            'answer' => Yii::t('base', 'label-answer'),
+            'lang' => Yii::t('base', 'label-lang'),
         ];
     }
 

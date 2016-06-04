@@ -7,6 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\QuestionCategories */
 
 $this->title = 'Create Question Categories';
+$this->params['breadcrumbs'][] = ['label' => 'Admin', 'url' => ['/admin/index']];
 $this->params['breadcrumbs'][] = ['label' => 'Question Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
